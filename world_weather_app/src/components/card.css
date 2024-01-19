@@ -1,0 +1,160 @@
+.main {
+  margin-top: 50px;
+}
+.weather-panel {
+  background-image: url("https://unsplash.it/600/400?image=roma");
+  background-size: cover;
+  border-radius: 20px;
+  box-shadow: 25px 25px 40px 0px rgba(0, 0, 0, 0.33);
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+
+  small {
+    color: inherit;
+    font-size: 50%;
+  }
+  ul.forecast > li {
+    border-top: 1px solid #fff;
+  }
+  .temperature {
+    & > span {
+      font-size: 2em;
+    }
+  }
+}
+
+.carousel-container2 {
+  width: 100%;
+  padding-block: 16px 32px;
+
+  overflow-x: auto;
+
+  width: 100%;
+  gap: 8px;
+  align-items: center;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-slide2 {
+  flex: 1 0 30%;
+  scroll-snap-align: center;
+}
+
+.carousel-container2::-webkit-scrollbar {
+  height: 14px;
+  width: calc(100% - 48px);
+}
+
+.carousel-container2::-webkit-scrollbar-track {
+  background: none;
+}
+
+.carousel-container2::-webkit-scrollbar-thumb {
+  background: none;
+}
+
+.carousel-container2::-webkit-scrollbar-track-piece:start {
+  background: none;
+}
+
+.wind {
+  width: 250px;
+}
+
+.wind1 {
+  width: 65%;
+}
+
+.wind2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+}
+
+.wind p:nth-child(2) {
+  border-bottom: 1px solid black;
+}
+
+.bordo {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 200px !important;
+  height: 135px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bordo p {
+  margin: 0;
+}
+
+.secondo {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.rettangolo {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 270px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+svg {
+  display: none;
+}
+
+.loader-container {
+  width: 30%;
+  height: 50%;
+  position: relative;
+  filter: url(#gooey);
+}
+
+.loader-container > * {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  width: 4rem;
+  height: 4rem;
+  background: #1ee4f2;
+  top: 25%;
+  border-radius: 50%;
+  animation: loading 4s infinite;
+  transform: scale(0.1);
+  opacity: 0;
+
+  &:nth-child(1) {
+    animation-delay: 0.5s;
+  }
+  &:nth-child(2) {
+    animation-delay: 1s;
+  }
+  &:nth-child(3) {
+    animation-delay: 1.5s;
+  }
+  &:nth-child(4) {
+    animation-delay: 2s;
+  }
+}
+
+@keyframes loading {
+  50% {
+    transform: scale(1.25);
+    left: 50%;
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.1);
+    left: 100%;
+    opacity: 0;
+  }
+}
