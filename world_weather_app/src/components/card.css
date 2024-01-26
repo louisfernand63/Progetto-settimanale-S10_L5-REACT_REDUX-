@@ -2,10 +2,10 @@
   margin-top: 50px;
 }
 .weather-panel {
-  background-image: url("https://unsplash.it/600/400?image=roma");
+  background-image: url("https://images.unsplash.com/photo-1610016302534-6f67f1c968d8?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   border-radius: 20px;
-  box-shadow: 25px 25px 40px 0px rgba(0, 0, 0, 0.33);
+  box-shadow: 15px 15px 30px 0px rgba(0, 0, 0, 0.33);
   color: #fff;
   overflow: hidden;
   position: relative;
@@ -116,45 +116,4 @@ svg {
   width: 30%;
   height: 50%;
   position: relative;
-  filter: url(#gooey);
-}
-
-.loader-container > * {
-  position: absolute;
-  display: inline-block;
-  left: 0;
-  width: 4rem;
-  height: 4rem;
-  background: #1ee4f2;
-  top: 25%;
-  border-radius: 50%;
-  animation: loading 4s infinite;
-  transform: scale(0.1);
-  opacity: 0;
-
-  &:nth-child(1) {
-    animation-delay: 0.5s;
-  }
-  &:nth-child(2) {
-    animation-delay: 1s;
-  }
-  &:nth-child(3) {
-    animation-delay: 1.5s;
-  }
-  &:nth-child(4) {
-    animation-delay: 2s;
-  }
-}
-
-@keyframes loading {
-  50% {
-    transform: scale(1.25);
-    left: 50%;
-    opacity: 1;
-  }
-  100% {
-    transform: scale(0.1);
-    left: 100%;
-    opacity: 0;
-  }
 }

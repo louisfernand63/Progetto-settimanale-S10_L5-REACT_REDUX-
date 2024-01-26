@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Forecast.css";
+import "./forecast.css";
 import { Col } from "react-bootstrap";
 
 export default function Forecast({ query }) {

@@ -1,42 +1,41 @@
 import React, { useEffect, useState } from "react";
-import "./Card.css";
+import "./card.css";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 
-export default function Card({ data }) {
+export default function Card({ info }) {
   const [mapPosition, setMapPosition] = useState([0, 0]);
 
   useEffect(() => {
-    // Imposta la posizione della mappa sulla latitudine e longitudine della città
-    if (data && data.coord) {
-      setMapPosition([data.coord.lat, data.coord.lon]);
+    if (info && info.coord) {
+      setMapPosition([info.coord.lat, info.coord.lon]);
     }
-  }, [data]);
+  }, [info]);
 
   console.log(mapPosition);
 
   return (
     <>
-      {data && data.hasOwnProperty("name") ? (
+      {info && info.hasOwnProperty("name") ? (
         <>
           <div className="mt-4">
             <div className="d-flex flex-column align-items-center">
               <h3 className="mb-0 fs-2">
                 {" "}
-                {data.hasOwnProperty("name") ? data.name : "Loading..."}
+                {info.hasOwnProperty("name") ? info.name : "Loading..."}
               </h3>
               <p className="mb-0" style={{ fontSize: "4rem" }}>
-                {parseInt(data.main.temp - 273.15) + "°"}
+                {parseInt(info.main.temp - 273) + "°"}
               </p>
               <p className="fw-bold mb-0">
-                {capitalizeEveryWord(data.weather[0].description)}
+                {capitalizeEveryWord(info.weather[0].description)}
               </p>
               <div>
                 <span className="fw-bold fs-4 me-2">
-                  MAX: {parseInt(data.main.temp_max - 273.15) + "°"}
+                  MAX: {parseInt(info.main.temp_max - 273) + "°"}
                 </span>
                 <span> </span>{" "}
                 <span className="fw-bold fs-4">
-                  MIN: {parseInt(data.main.temp_min - 273.15) + "°"}
+                  MIN: {parseInt(info.main.temp_min - 273) + "°"}
                 </span>
               </div>
             </div>
@@ -57,13 +56,13 @@ export default function Card({ data }) {
                           alt=""
                           style={{ width: "20px" }}
                         />
-                        <p className="my-0 ms-2 border-0">VENTO</p>
+                        <p className="my-0 ms-2 border-0">wind</p>
                       </div>
 
                       <p className="m-0 fw-bold py-2">
-                        {parseInt(data.wind.speed)} m/s
+                        {parseInt(info.wind.speed)} m/s
                       </p>
-                      <p className="m-0 fw-bold py-2">{data.wind.deg} gradi</p>
+                      <p className="m-0 fw-bold py-2">{info.wind.deg} gradi</p>
                     </div>
                     <div className="wind2">
                       <img
@@ -88,9 +87,9 @@ export default function Card({ data }) {
                       />
                       <p className="my-0 ms-2">VISIBILITA'</p>
                     </div>
-                    <p className="secondo">{data.visibility / 1000} km</p>
+                    <p className="secondo">{info.visibility / 1000} km</p>
                     <p>
-                      {data.visibility > 5000
+                      {info.visibility > 5000
                         ? "Buona visibilità."
                         : "Poca visibilità."}
                     </p>
@@ -110,7 +109,7 @@ export default function Card({ data }) {
                       />
                       <p className="my-0 ms-2">UMIDITA'</p>
                     </div>
-                    <p className="secondo">{data.main.humidity} %</p>
+                    <p className="secondo">{info.main.humidity} %</p>
                     <p>Punto di rugiada: 3°.</p>
                   </div>
                 </div>
@@ -128,7 +127,7 @@ export default function Card({ data }) {
                       />
                       <p className="my-0 ms-2">PRESSIONE</p>
                     </div>
-                    <p className="secondo">{data.main.pressure} hPa</p>
+                    <p className="secondo">{info.main.pressure} hPa</p>
                   </div>
                 </div>
 
@@ -146,9 +145,9 @@ export default function Card({ data }) {
                       <p className="my-0 ms-2">LEVATA DEL SOLE</p>
                     </div>
                     <p className="secondo">
-                      {convertTimestampToTime(data.sys.sunrise)}{" "}
+                      {convertTimestampToTime(info.sys.sunrise)}{" "}
                     </p>
-                    <p>Tramonto: {convertTimestampToTime(data.sys.sunset)}</p>
+                    <p>Tramonto: {convertTimestampToTime(info.sys.sunset)}</p>
                   </div>
                 </div>
               </div>
@@ -165,7 +164,7 @@ export default function Card({ data }) {
               attribution="&copy; OpenStreetMap contributors"
             />
             <Marker position={mapPosition}>
-              <Popup>{data.name}</Popup>
+              <Popup>{info.name}</Popup>
             </Marker>
           </MapContainer>
         </>
